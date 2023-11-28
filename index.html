@@ -3,10 +3,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width ,initial-scale=1.0 ">
     <title> Learning Vue</title>
-    <script src="https://unpkg.com/bue@3.0.2"> </script>
+    <script src="https://unpkg.com/vue@3.0.2"> </script>
+    <style>
+        .box{
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background: #ddd;
+            margin: 20px;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
     <H1>Hello Vue :) </H1>
+    <div id="app">
+        <div v-if="showBooks">
+            <!-- the variables into the {} is the data =>output-->
+            <p>{{ title }} -{{ author }} - {{ age }}  </p>
+            <!-- @ equal as v-on:-->
+            <div @click="changeTitle('blabla')"> change book title </div>
+        </div>
+        <!-- v-if renders the element depending on the condition-->
+        <button @click="toggleShowBooks"> 
+            <span v-if="showBooks"> Hide Books</span>
+            <span v-else> Show Books</span>     
+        </button> 
+        <!--v-show only changes its visibility -->
+        <!-- more faster than v-if cause hidding -->
+        <div v-show="showBooks"> currently showing books</div>
+
+        <!--mouse events-->
+        <div class="box" @mouseover="handleEvents"> mouseover (enter)</div>
+        <div class="box" @mouseleave="handleEvents"> mouseleave</div> 
+        <div class="box" @dbclick="handleEvents"> double click</div> 
+        <div class="box" @mousemove="handleMouseMove"> position - {{x}} {{y}}</div>   
+
+    </div>
+    <script src="app.js"> </script>
 </body>
 
 </html>
